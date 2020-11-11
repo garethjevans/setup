@@ -1,0 +1,11 @@
+name: CI
+on:
+  pull_request:
+jobs:
+  macos:
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Configure and Test
+        run: brew update && make setup && make check
