@@ -63,3 +63,5 @@ fi
 
 # asdf
 command -v asdf 1>/dev/null && . /usr/local/opt/asdf/asdf.sh || echo "asdf is not installed"
+
+export AWS_PROFILE=cloudbees-jenkins
