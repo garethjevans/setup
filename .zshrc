@@ -16,8 +16,8 @@ done
 unset file
 
 ## gpg
-export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye
+export GPG_TTY=$TTY
+gpg-connect-agent updatestartuptty /bye > /dev/null
 unset SSH_AGENT_PID
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
@@ -72,4 +72,9 @@ fi
 # asdf
 command -v asdf 1>/dev/null && . /usr/local/opt/asdf/asdf.sh || echo "asdf is not installed"
 
-export AWS_PROFILE=cloudbees-jenkins
+eval "$(direnv hook $SHELL)"
+. ~/.asdf/plugins/java/set-java-home.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
